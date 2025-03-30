@@ -28,7 +28,7 @@ class HelloWorld(AbstractLambda):
         else:
             error_message = {
                 "statusCode": 400,
-                "message": f"Bad request syntax or unsupported method. Request path: {path}. HTTP method: {method}"
+
             }
             return {
                 "statusCode": 400,
