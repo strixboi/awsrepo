@@ -1,0 +1,17 @@
+account_id: '423623856894'
+deploy_target_bucket: syndicate-education-platform-custom-sandbox-artifacts-1605/5286146a/task04
+expiration: 2025-03-31 00:17:51.378289+00:00
+extended_prefix_mode: true
+iam_permissions_boundary: undefined
+project_path: C:\Users\Strix\Desktop\AWS\awsrepo
+region: eu-west-1
+resources_prefix: cmtr-5286146a-
+tags:
+  run_id: JAP-12
+  run_type: stm
+  type: user
+  user_id: 5286146a
+temp_aws_access_key_id: ASIAWFIPTCL7BU7R5DMU
+temp_aws_secret_access_key: QTq3eISUpq5GjBa03xLA1uL4zFUBOcZ4twPG5KSW
+temp_aws_session_token: IQoJb3JpZ2luX2VjEDAaCXVzLWVhc3QtMSJGMEQCIH2GjDEY5RH6PwhUjys3bfVDHnTRExz52+8Q50RlRLavAiAl1LoTitZdnvHubPx0UvxEZ+gxPyVQfsr0QoDU1BQWSirdAgiZ//////////8BEAAaDDQyMzYyMzg1Njg5NCIMN7H3S15Psss4NdEjKrECNm0M0O/Y2owJhgFoop/5UmF5ggVhEdTKA00rnQyDIIShvJUW14SnFj2tpuCq3B6g++kkbaFxdolmH+kPWKZqZ+SLqz2NtoFPAjq7dtZWwFep+TPPeOwOPyw9q1K5awk/DBEtpf4SLFJxOaZTXA4BpmixQnTw19maNeH1SlAiyaPngAD4YCCteEi655W55DB+zeRJxH8+rQh+5T/XGanHzz4CYsspMoS6FBz852zip+6MGM0M1VRuQdcJ059W3YYErV7afRf7N+oiyxCSyDjd8jgIL2EyzNsDZ54haDW/KC/tE0t8aRVVBiAqUJrIjjFLSPR92B09jcJoQhLbAKgnjVoamWN1BFj/n3bO/ETC5uV+GO7QYF4CNr/4BeVmdcVtpS+MBq3sLmK7uHVAsVTHTmUw56anvwY6ngGiFr2tOCrewgbNPzzVPPLmrlsas9/vmLntix+6g/hzo7c1QimmG5T8XVrgtt04BfKtq8OiK0h5bn9Cp7qZijV6FuTpGqTqpSzLQymcNL0i0jrBmKH6CUsN3BybN/MEsEtCcmCBnMeidFns8Nynn+Bk1rpbnwU5dlECgR7ORukG7u0z9wQKlhSaJfNQlu+OoSxKaevDLfj2sXX/Su4WNg==
+use_temp_creds: false
