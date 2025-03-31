@@ -16,5 +16,7 @@
   "url_config": {},
   "ephemeral_storage": 512,
   "logs_expiration": "${logs_expiration}",
-  "tags": {}
+  "tags": {},
+  "table_name": "${target_table}",
+  "region": "${region}"
 }
