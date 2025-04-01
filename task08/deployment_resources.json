@@ -32,7 +32,7 @@
     "tags": {},
     "expression": "rate(1 minute)"
   },
-  "${target_bucket}": {
+  "uuid-storage": {
     "resource_type": "s3_bucket",
     "acl": "private",
     "cors": [],
