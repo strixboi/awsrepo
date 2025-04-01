@@ -30,7 +30,7 @@ class ApiHandler(AbstractLambda):
             }
 
         record = {
-            "uuid": str(uuid.uuid4()),
+            "id": str(uuid.uuid4()),
             "principalId": event.get("principalId"),
             "createdAt": datetime.datetime.utcnow().isoformat() + "Z",
             "body": event.get("content", {})
