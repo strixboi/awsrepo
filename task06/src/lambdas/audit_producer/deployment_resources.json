@@ -4,7 +4,6 @@
     "principal_service": "lambda",
     "custom_policies": [
       "lambda-basic-execution",
-      "dynamodb:GetShardIterator",
       "dynamodb:DescribeStream",
       "dynamodb:ListStreams",
       "dynamodb:GetRecords"
