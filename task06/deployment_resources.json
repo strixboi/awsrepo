@@ -12,9 +12,11 @@
             "dynamodb:PutItem",
             "dynamodb:Batch*",
             "dynamodb:DeleteItem",
-            "dynamodb:GetRecords",
             "dynamodb:Scan",
             "dynamodb:UpdateItem",
+            "dynamodb:GetShardIterator",
+            "dynamodb:DescribeStream",
+            "dynamodb:ListStreams",
             "dynamodb:GetRecords",
             "ssm:PutParameter",
             "ssm:GetParameter",
@@ -29,7 +31,7 @@
     "resource_type": "iam_policy",
     "tags": {}
   },
-  "Configuration": {
+ "Configuration": {
     "resource_type": "dynamodb_table",
     "hash_key_name": "key",
     "hash_key_type": "S",

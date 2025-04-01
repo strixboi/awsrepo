@@ -1,15 +1,11 @@
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "dynamodb:GetRecords",
-        "dynamodb:GetShardIterator",
-        "dynamodb:DescribeStream",
-        "dynamodb:ListStreams"
-      ],
-      "Resource": "arn:aws:dynamodb:eu-west-1:423623856894:table/cmtr-5286146a-Configuration-3yng/stream/*"
-    }
-  ]
+  "audit_producer-role": {
+    "predefined_policies": [],
+    "principal_service": "lambda",
+    "custom_policies": [
+      "lambda-basic-execution"
+    ],
+    "resource_type": "iam_role",
+    "tags": {}
+  }
 }
