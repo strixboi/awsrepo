@@ -15,12 +15,21 @@ class AuditProducer(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        table_name = os.getenv('table_name')
         dynamo = boto3.resource("dynamodb")
-        audit_table = dynamo.Table('table_name')
+        audit_table = dynamo.Table(os.getenv('table_name'))
 
         config_item = event.get("Records")[0]
-        audit_item = {}
+
+
+        if config_item['eventName'] == "INSERT":
+            audit_item = {
+                "id": str(uuid.uuid4()),
+                "itemKey": config_item["dynamodb"]["NewImage"]["key"]["S"],
+                "modificationTime": datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+                "newValue": { "key": config_item["dynamodb"]["NewImage"]["key"]["S"],
+                              "value": int(config_item["dynamodb"]["NewImage"]["value"]["N"])}
+            }
+            audit_table.put_item(Item=audit_item)
 
         if config_item['eventName'] == "MODIFY":
             audit_item = {
@@ -32,15 +41,7 @@ class AuditProducer(AbstractLambda):
                     "newValue": int(config_item["dynamodb"]["NewImage"]["value"]["N"]),
             }
             audit_table.put_item(Item=audit_item)
-        if config_item['eventName'] == "INSERT":
-            audit_item = {
-                "id": str(uuid.uuid4()),
-                "itemKey": config_item["dynamodb"]["NewImage"]["key"]["S"],
-                "modificationTime": datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
-                "newValue": { "key": config_item["dynamodb"]["NewImage"]["key"]["S"],
-                              "value": int(config_item["dynamodb"]["NewImage"]["value"]["N"])}
-            }
-            audit_table.put_item(Item=audit_item)
+
 
 
 HANDLER = AuditProducer()
