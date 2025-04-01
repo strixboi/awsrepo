@@ -19,16 +19,18 @@ class UuidGenerator(AbstractLambda):
         """
         Generate and pass UUIDs
         """
+
         unique_ids = [str(uuid.uuid4()) for i in range(10)]
         j_dump = json.dumps({
             'ids': unique_ids})
 
         name = datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
         boto3.client('s3').put_object(
-            Bucket=os.getenv('S3_BUCKET_NAME', 'uuid-storage'),
+            Bucket=os.getenv('target_bucket', 'uuid-storage'),
             Key= f"name",
             Body=j_dump
         )
+        _LOG.info(f"Success, ")
 
     
 
