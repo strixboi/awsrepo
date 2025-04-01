@@ -15,7 +15,6 @@
             "dynamodb:GetRecords",
             "dynamodb:Scan",
             "dynamodb:UpdateItem",
-            "dynamodb:GetShardIterator",
             "dynamodb:DescribeStream",
             "dynamodb:ListStreams",
             "dynamodb:GetRecords",
