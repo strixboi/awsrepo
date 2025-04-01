@@ -59,7 +59,8 @@ class ApiHandler(AbstractLambda):
         return {
             "statusCode": 201,
             "body": {
-                "event": record
+                "event": record,
+                "statusCode": 201
             }
         }
 
