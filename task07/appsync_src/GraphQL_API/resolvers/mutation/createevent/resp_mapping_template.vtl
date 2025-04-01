@@ -1,0 +1,9 @@
+#if($ctx.error)
+{
+  "errorMessage": "$ctx.error.message",
+  "errorType": "$ctx.error.type"
+}
+#end
+{
+  "id": "$context.result.id",
+  "createdAt": "$context.result.createdAt"}

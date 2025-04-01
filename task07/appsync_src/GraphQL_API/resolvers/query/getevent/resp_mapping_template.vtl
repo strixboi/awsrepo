@@ -1,0 +1,9 @@
+#if($ctx.error)
+{
+  "errorMessage": "$ctx.error.message",
+  "errorType": "$ctx.error.type"
+}
+
+#else
+$util.toJson($ctx.result)
+#end
