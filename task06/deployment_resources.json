@@ -13,6 +13,12 @@
             "dynamodb:Batch*",
             "dynamodb:DeleteItem",
             "dynamodb:GetRecords",
+            "dynamodb:Scan",
+            "dynamodb:UpdateItem",
+            "dynamodb:GetShardIterator",
+            "dynamodb:DescribeStream",
+            "dynamodb:ListStreams",
+            "dynamodb:GetRecords",
             "ssm:PutParameter",
             "ssm:GetParameter",
             "kms:Decrypt"
@@ -36,7 +42,7 @@
     "autoscaling": [],
     "tags": {}
   },
-  "${target_table}": {
+  "Audit": {
     "resource_type": "dynamodb_table",
     "hash_key_name": "id",
     "hash_key_type": "S",
