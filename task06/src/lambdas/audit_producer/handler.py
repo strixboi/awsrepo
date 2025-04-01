@@ -15,13 +15,14 @@ class AuditProducer(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        dynamo = boto3.resource("dynamodb")
-        audit_table = dynamo.Table(os.getenv('table_name'))
+        table_name = os.getenv('table_name')
+        dynamodb = boto3.resource("dynamodb")
+        audit_table = dynamodb.Table(table_name)
 
         config_item = event.get("Records")[0]
 
-
-        if config_item['eventName'] == "INSERT":
+        audit_item = None
+        if config_item["eventName"] == "INSERT":
             audit_item = {
                 "id": str(uuid.uuid4()),
                 "itemKey": config_item["dynamodb"]["NewImage"]["key"]["S"],
@@ -29,7 +30,7 @@ class AuditProducer(AbstractLambda):
                 "newValue": { "key": config_item["dynamodb"]["NewImage"]["key"]["S"],
                               "value": int(config_item["dynamodb"]["NewImage"]["value"]["N"])}
             }
-            audit_table.put_item(Item=audit_item)
+
 
         if config_item['eventName'] == "MODIFY":
             audit_item = {
@@ -40,7 +41,7 @@ class AuditProducer(AbstractLambda):
                     "oldValue": int(config_item["dynamodb"]["OldImage"]["value"]["N"]),
                     "newValue": int(config_item["dynamodb"]["NewImage"]["value"]["N"]),
             }
-            audit_table.put_item(Item=audit_item)
+        audit_table.put_item(Item=audit_item)
 
 
 
