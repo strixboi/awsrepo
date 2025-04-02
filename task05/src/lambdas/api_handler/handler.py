@@ -23,7 +23,7 @@ class ApiHandler(AbstractLambda):
             "body": event.get("content", {})
         }
 
-        dynamodb = boto3.resource('dynamodb', region_name=os.environ['region'])
+        dynamodb = boto3.resource("dynamodb", region_name=os.environ.get("region", "eu-central-1"))
         table_name = os.environ.get("target_table")
         if not table_name:
             _LOG.error("Environment variable 'target_table' is not set.")
