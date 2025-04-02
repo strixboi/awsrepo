@@ -10,13 +10,11 @@
   "lambda_path": "lambdas\\api_handler",
   "dependencies": [],
   "event_sources": [],
-  "env_variables": {  "table_name": "${target_table}",  "region": "${region}"},
+  "env_variables": {},
   "publish_version": true,
   "alias": "${lambdas_alias_name}",
   "url_config": {},
   "ephemeral_storage": 512,
   "logs_expiration": "${logs_expiration}",
-  "tags": {},
-  "table_name": "${target_table}",
-  "region": "${region}"
+  "tags": {}
 }
