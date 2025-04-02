@@ -27,7 +27,7 @@ class UuidGenerator(AbstractLambda):
             name = datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
             boto3.client('s3').put_object(
                 Bucket=os.getenv('target_bucket', 'uuid-storage'),
-                Key= f"name",
+                Key= f"{name}",
                 Body=j_dump,
                 ContentType='application/json'
             )
