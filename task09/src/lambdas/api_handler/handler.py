@@ -25,10 +25,10 @@ class ApiHandler(AbstractLambda):
 
         if info.get('path') == '/weather' and info.get('method') == "GET":
             weather_request = requests.get("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m")
-            response_body = {weather_request.json()}
+
             response = {
                 "statusCode": 200,
-                "body": json.dumps(response_body,indent=2),
+                "body": weather_request.json(),
                 "headers": {
                     "content-type": "application/json"}
             }
@@ -37,7 +37,7 @@ class ApiHandler(AbstractLambda):
             "statusCode": 400,
             "body": {
               "statusCode": 400,
-              "message": "Bad request syntax or unsupported method. Request path: {path}. HTTP method: {method}"},
+              "message": f"Bad request syntax or unsupported method. Request path: {path}. HTTP method: {method}"},
             "headers": {
               "content-type": "application/json"},
             "isBase64Encoded": False
