@@ -15,17 +15,10 @@ class ApiHandler(AbstractLambda):
         pass
         
     def handle_request(self, event, context):
-        # Validate the event before processing
-        validation_result = self.validate_request(event)
-        if not validation_result["is_valid"]:
-            return {
-                "statusCode": 400,
-                "body": {"error": validation_result["error"]}
-            }
 
         record = {
             "id": str(uuid.uuid4()),
-            "principalId": event.get("principalId"),
+            "principalId": event.get("principalId",1),
             "createdAt": datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z"),
             "body": event.get("content", {})
         }
