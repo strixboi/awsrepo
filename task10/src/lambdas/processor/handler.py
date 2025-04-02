@@ -19,11 +19,11 @@ class Processor(AbstractLambda):
         #https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m
         request_context = event.get('requestContext',{})
         info = request_context.get('http',{})
-        method = info.get('method')
-        path = info.get('path')
+        #method = info.get('method')
+        path = event.get('requestContext', {}).get('http', {}).get('path')
 
         dynamo = boto3.resource('dynamodb')
-
+        _LOG.info(f"{path}")
         if path == "/weather" or path == "/":
             dynamo_table = dynamo.Table(os.getenv('table_name'))
             request = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m")
@@ -50,6 +50,7 @@ class Processor(AbstractLambda):
                           "utc_offset_seconds": request_info["utc_offset_seconds"]
                 }
             }
+
             record = json.loads(json.dumps(item))
             dynamo_table.put_item(Item = record)
             # "elevation": number,
