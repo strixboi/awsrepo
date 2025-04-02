@@ -58,25 +58,24 @@ class Processor(AbstractLambda):
             #               "utc_offset_seconds": request_info["utc_offset_seconds"]
             #     }
             # }
-            item = {}
-            item['id'] = str(uuid.uuid4())
-            item['forecast'] = {
-                         "elevation": request_info['elevation'],
-                         "generationtime_ms": request_info["generationtime_ms"],
-                         "hourly": {
-                             "temperature_2m": request_info['hourly']['temperature_2m'],
-                             "time": request_info['hourly']['time'],
-                          },
-                          "hourly_units": {
-                             "temperature_2m": str(request_info['hourly_units']['temperature_2m']),
-                             "time": str(request_info['hourly_units']['time']),
-                          },
-                          "latitude": request_info["latitude"],
-                          "longitude": request_info["longitude"],
-                          "timezone": request_info["timezone"],
-                          "timezone_abbreviation": request_info["timezone_abbreviation"],
-                          "utc_offset_seconds": request_info["utc_offset_seconds"]
-                }
+            item = {'id': str(uuid.uuid4()),
+                    'forecast': {
+                "elevation": request_info['elevation'],
+                "generationtime_ms": request_info["generationtime_ms"],
+                "hourly": {
+                    "temperature_2m": request_info['hourly']['temperature_2m'],
+                    "time": request_info['hourly']['time'],
+                },
+                "hourly_units": {
+                    "temperature_2m": str(request_info['hourly_units']['temperature_2m']),
+                    "time": str(request_info['hourly_units']['time']),
+                },
+                "latitude": request_info["latitude"],
+                "longitude": request_info["longitude"],
+                "timezone": request_info["timezone"],
+                "timezone_abbreviation": request_info["timezone_abbreviation"],
+                "utc_offset_seconds": request_info["utc_offset_seconds"]
+            }}
 
             record = json.loads(json.dumps(item))
             dynamo_table.put_item(Item = record)
