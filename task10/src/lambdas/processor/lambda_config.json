@@ -17,7 +17,8 @@
   "publish_version": true,
   "alias": "${lambdas_alias_name}",
   "tracing_mode": "Active",
-  "url_config": { "auth_type": "NONE" },
+  "url_config": { "auth_type": "NONE"
+  },
   "ephemeral_storage": 512,
   "logs_expiration": "${logs_expiration}",
   "tags": {}
