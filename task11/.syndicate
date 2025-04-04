@@ -1,0 +1,20 @@
+name: task11
+locks:
+  modification_lock:
+    last_modification_date: '2025-04-04T06:06:59Z'
+    is_locked: false
+    initiator: Strix
+events:
+- operation: clean
+  initiator: Strix
+  bundle_name: 2
+  time_start: '2025-04-04T08:06:59Z'
+  time_end: '2025-04-04T08:06:59Z'
+  duration_sec: 0.0
+  status: aborted
+latest_deploy: {}
+build_projects_mapping:
+  python: src
+lambdas:
+  api_handler:
+    runtime: python
